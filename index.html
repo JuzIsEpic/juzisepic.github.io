@@ -107,32 +107,43 @@
     }
 
     .about-section {
-      max-width: 600px;
-      text-align: center;
-      margin: 40px 20px;
-      padding: 30px;
+      display: flex;
+      align-items: center;
       background-color: rgba(26, 26, 26, 0.85);
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+      margin: 40px 20px;
+      padding: 30px;
+      max-width: 600px;
     }
 
     .about-section img {
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      margin: 20px 0;
+      margin-right: 20px;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     }
 
-    .about-section p {
-      font-size: 1.05em;
+    .about-info {
+      text-align: left;
+    }
+
+    .about-info h2 {
+      margin: 0;
+      font-size: 1.4em;
+      color: #fff;
+    }
+
+    .about-info p {
+      margin-top: 10px;
       color: #ddd;
     }
 
     .channel-button {
       display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
+      margin-top: 10px;
+      padding: 8px 16px;
       background-color: #ff0000;
       color: white;
       border-radius: 6px;
@@ -186,10 +197,12 @@
     </section>
 
     <section class="about-section">
-      <p>Hi, I'm <strong>JuzIsEpic</strong>. I am a pro at FNF and I make videos of Roblox, Minecraft and so much more. I hope you subscribe to me :D</p>
       <img src="https://avatars.githubusercontent.com/u/136857360?v=4" alt="YouTube Icon">
-      <br>
-      <a class="channel-button" href="https://www.youtube.com/@juzisepic" target="_blank">Visit Channel</a>
+      <div class="about-info">
+        <h2>JuzIsEpic</h2>
+        <p>Hi, I'm JuzIsEpic. I am a pro at FNF and I make videos of Roblox, Minecraft and so much more. I hope you subscribe to me :D</p>
+        <a class="channel-button" href="https://www.youtube.com/@juzisepic" target="_blank">Visit Channel</a>
+      </div>
     </section>
 
     <footer>
