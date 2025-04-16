@@ -39,6 +39,7 @@
       font-size: 2em;
       font-weight: 600;
       letter-spacing: 1px;
+      position: relative;
     }
 
     header {
@@ -81,6 +82,8 @@
       transition: transform 0.2s ease;
       display: flex;
       align-items: center;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .game-card:hover {
@@ -88,9 +91,9 @@
     }
 
     .game-card img {
-      width: 48px;
-      height: 48px;
-      border-radius: 10px;
+      width: 100px;
+      height: 100px;
+      border-radius: 12px;
       object-fit: cover;
     }
 
@@ -99,7 +102,7 @@
       text-decoration: none;
       font-weight: 600;
       font-size: 1.1em;
-      margin-left: 10px;
+      margin-top: 10px;
     }
 
     .game-card a:hover {
