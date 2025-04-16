@@ -1,58 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JuzIsEpic's GitHub Games</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212; /* Dark background */
-            color: #e0e0e0; /* Light text */
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            color: #f1f1f1; /* Lighter text for the header */
-        }
-        img {
-            width: 100px; /* You can adjust the size */
-            border-radius: 50%;
-            margin-bottom: 20px; /* Add some space below the image */
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            background-color: #333; /* Dark background for list items */
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); /* Lighter shadow for dark mode */
-        }
-        a {
-            text-decoration: none;
-            color: #007bff; /* Blue links */
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JuzIsEpic's GitHub Games</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Rubik', sans-serif;
+      background: #121212;
+      color: #f0f0f0;
+      overflow-x: hidden;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding-bottom: 60px;
+    }
+
+    .banner {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(to right, #4fc3f7, #1976d2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2em;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    header {
+      padding: 30px 20px 10px;
+    }
+
+    header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      margin: 10px 0;
+    }
+
+    p {
+      font-size: 1.1em;
+      color: #cccccc;
+      margin-top: 0;
+    }
+
+    .game-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 30px 20px;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .game-card {
+      background-color: rgba(30, 30, 30, 0.8);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+      transition: transform 0.2s ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .game-card a {
+      color: #4fc3f7;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1em;
+    }
+
+    .game-card a:hover {
+      text-decoration: underline;
+    }
+
+    .about-section {
+      max-width: 600px;
+      text-align: center;
+      margin: 40px 20px;
+      padding: 30px;
+      background-color: rgba(26, 26, 26, 0.85);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+    }
+
+    .about-section img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 20px 0;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .about-section p {
+      font-size: 1.05em;
+      color: #ddd;
+    }
+
+    .channel-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #ff0000;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.2s ease;
+    }
+
+    .channel-button:hover {
+      background-color: #cc0000;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 20px;
+      color: #999;
+      font-size: 0.9em;
+    }
+
+    footer a {
+      color: #4fc3f7;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-    <!-- Profile Image -->
-    <img src="https://avatars.githubusercontent.com/u/136857360?v=4" alt="JuzIsEpic's Avatar">
+  <div class="content">
+    <div class="banner">
+      JuzIsEpic's GitHub Games
+    </div>
 
-    <h1>Welcome to JuzIsEpic's GitHub Games!</h1>
-    <p>Here are some of my games I posted on GitHub:</p>
-    <ul>
-        <li><a href="https://juzisepic.github.io/not-a-dash-game/">Not A Dash Game</a></li>
-        <li><a href="https://juzisepic.github.io/toasty-jump/">Toasty Jump</a></li>
-        <li><a href="https://juzisepic.github.io/undertale-challenge/">UNDERTALE Challenge</a></li>
-        <!-- Add more games as needed -->
-    </ul>
+    <header>
+      <img src="https://avatars.githubusercontent.com/u/136857360?v=4" alt="JuzIsEpic's Avatar">
+      <h1>Welcome!</h1>
+      <p>Here are some games I’ve built and posted on GitHub Pages:</p>
+    </header>
+
+    <section class="game-list">
+      <div class="game-card">
+        <a href="https://juzisepic.github.io/not-a-dash-game/" target="_blank">Not A Dash Game</a>
+      </div>
+      <div class="game-card">
+        <a href="https://juzisepic.github.io/toasty-jump/" target="_blank">Toasty Jump</a>
+      </div>
+      <div class="game-card">
+        <a href="https://juzisepic.github.io/undertale-challenge/" target="_blank">UNDERTALE Challenge</a>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <p>Hi, I'm <strong>JuzIsEpic</strong>. I am a pro at FNF and I make videos of Roblox, Minecraft and so much more. I hope you subscribe to me :D</p>
+      <img src="https://avatars.githubusercontent.com/u/136857360?v=4" alt="YouTube Icon">
+      <br>
+      <a class="channel-button" href="https://www.youtube.com/@juzisepic" target="_blank">Visit Channel</a>
+    </section>
+
+    <footer>
+      © 2025 JuzIsEpic · <a href="https://github.com/juzisepic" target="_blank">GitHub Profile</a>
+    </footer>
+  </div>
 </body>
 </html>
-
-
