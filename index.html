@@ -87,6 +87,13 @@
       transform: translateY(-5px);
     }
 
+    .game-card img {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
     .game-card a {
       color: #4fc3f7;
       text-decoration: none;
@@ -109,29 +116,12 @@
       box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
     }
 
-    .about-content {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 20px;
-      justify-content: center;
-    }
-
-    .about-content img {
-      width: 80px;
-      height: 80px;
+    .about-section img {
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
+      margin: 20px 0;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-    }
-
-    .about-text {
-      text-align: left;
-    }
-
-    .about-text h2 {
-      margin: 0 0 8px;
-      font-size: 1.4em;
-      color: #fff;
     }
 
     .about-section p {
@@ -141,7 +131,7 @@
 
     .channel-button {
       display: inline-block;
-      margin-top: 0;
+      margin-top: 20px;
       padding: 10px 20px;
       background-color: #ff0000;
       color: white;
@@ -182,28 +172,24 @@
 
     <section class="game-list">
       <div class="game-card">
-        <img src="https://imagizer.imageshack.com/img923/4826/cjSJgX.png" alt="Not A Dash Game" width="50" height="50">
+        <img src="https://imagizer.imageshack.com/img923/4826/cjSJgX.png" alt="Not A Dash Game Icon">
         <a href="https://juzisepic.github.io/not-a-dash-game/" target="_blank">Not A Dash Game</a>
       </div>
       <div class="game-card">
-        <img src="https://imagizer.imageshack.com/img924/1980/ODcYTc.png" alt="Toasty Jump" width="50" height="50">
+        <img src="https://imagizer.imageshack.com/img924/1980/ODcYTc.png" alt="Toasty Jump Icon">
         <a href="https://juzisepic.github.io/toasty-jump/" target="_blank">Toasty Jump</a>
       </div>
       <div class="game-card">
-        <img src="https://imagizer.imageshack.com/img924/6811/S73E9J.png" alt="UNDERTALE Challenge" width="50" height="50">
+        <img src="https://imagizer.imageshack.com/img924/6811/S73E9J.png" alt="Undertale Challenge Icon">
         <a href="https://juzisepic.github.io/undertale-challenge/" target="_blank">UNDERTALE Challenge</a>
       </div>
     </section>
 
     <section class="about-section">
-      <div class="about-content">
-        <img src="https://avatars.githubusercontent.com/u/136857360?v=4" alt="Channel Icon">
-        <div class="about-text">
-          <h2>JuzIsEpic</h2>
-          <a class="channel-button" href="https://www.youtube.com/@juzisepic" target="_blank">Visit Channel</a>
-        </div>
-      </div>
       <p>Hi, I'm <strong>JuzIsEpic</strong>. I am a pro at FNF and I make videos of Roblox, Minecraft and so much more. I hope you subscribe to me :D</p>
+      <img src="https://avatars.githubusercontent.com/u/136857360?v=4" alt="YouTube Icon">
+      <br>
+      <a class="channel-button" href="https://www.youtube.com/@juzisepic" target="_blank">Visit Channel</a>
     </section>
 
     <footer>
