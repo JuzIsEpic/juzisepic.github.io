@@ -17,6 +17,7 @@
       background: #121212;
       color: #f0f0f0;
       overflow-x: hidden;
+      font-size: 1.1em;
     }
 
     .content {
@@ -36,7 +37,7 @@
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 2em;
+      font-size: 3em;
       font-weight: 600;
       letter-spacing: 1px;
       position: relative;
@@ -47,20 +48,20 @@
     }
 
     header img {
-      width: 120px;
-      height: 120px;
+      width: 132px;
+      height: 132px;
       border-radius: 50%;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
       margin-bottom: 15px;
     }
 
     h1 {
-      font-size: 1.8em;
+      font-size: 2em;
       margin: 10px 0;
     }
 
     p {
-      font-size: 1.1em;
+      font-size: 1.2em;
       color: #cccccc;
       margin-top: 0;
     }
@@ -72,22 +73,21 @@
       padding: 30px 20px;
       max-width: 1000px;
       width: 100%;
+      margin-top: 40px;
     }
 
     .game-card {
       background-color: rgba(30, 30, 30, 0.8);
       border-radius: 12px;
-      padding: 20px;
+      padding: 40px 20px 20px;
       box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
       transition: transform 0.2s ease;
       display: flex;
       align-items: center;
       flex-direction: column;
       justify-content: center;
-    }
-
-    .game-card:hover {
-      transform: translateY(-5px);
+      position: relative;
+      margin-top: 30px;
     }
 
     .game-card img {
@@ -95,18 +95,22 @@
       height: 100px;
       border-radius: 12px;
       object-fit: cover;
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%); /* Centering the image horizontally */
     }
 
     .game-card a {
-      color: white; /* Fixed text color to white */
-      text-decoration: none; /* Removed underline */
+      color: #ffffff;
+      text-decoration: none;
       font-weight: 600;
-      font-size: 1.1em;
+      font-size: 1.2em;
       margin-top: 10px;
     }
 
     .game-card a:hover {
-      text-decoration: underline; /* Underline on hover */
+      text-decoration: underline;
     }
 
     .about-section {
@@ -134,25 +138,27 @@
 
     .about-info h2 {
       margin: 0;
-      font-size: 1.4em;
+      font-size: 1.6em;
       color: #fff;
     }
 
     .about-info p {
       margin-top: 10px;
       color: #ddd;
+      font-size: 1.1em;
     }
 
     .channel-button {
       display: inline-block;
       margin-top: 10px;
-      padding: 8px 16px;
+      padding: 10px 18px;
       background-color: #ff0000;
       color: white;
       border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
       transition: background-color 0.2s ease;
+      font-size: 1.1em;
     }
 
     .channel-button:hover {
@@ -163,7 +169,7 @@
       margin-top: auto;
       padding: 20px;
       color: #999;
-      font-size: 0.9em;
+      font-size: 1em;
     }
 
     footer a {
@@ -188,20 +194,20 @@
       <div class="game-card">
         <a href="https://juzisepic.github.io/not-a-dash-game/" target="_blank">
           <img src="https://imagizer.imageshack.com/img923/4826/cjSJgX.png" alt="Not A Dash Game Icon">
-          <p>Not A Dash Game</p>
         </a>
+        <a href="https://juzisepic.github.io/not-a-dash-game/" target="_blank">Not A Dash Game</a>
       </div>
       <div class="game-card">
         <a href="https://juzisepic.github.io/toasty-jump/" target="_blank">
           <img src="https://imagizer.imageshack.com/img924/1980/ODcYTc.png" alt="Toasty Jump Icon">
-          <p>Toasty Jump</p>
         </a>
+        <a href="https://juzisepic.github.io/toasty-jump/" target="_blank">Toasty Jump</a>
       </div>
       <div class="game-card">
         <a href="https://juzisepic.github.io/undertale-challenge/" target="_blank">
           <img src="https://imagizer.imageshack.com/img924/6811/S73E9J.png" alt="Undertale Challenge Icon">
-          <p>UNDERTALE Challenge</p>
         </a>
+        <a href="https://juzisepic.github.io/undertale-challenge/" target="_blank">UNDERTALE Challenge</a>
       </div>
     </section>
 
