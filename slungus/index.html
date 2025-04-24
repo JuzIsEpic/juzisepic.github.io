@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkerboard and Bouncing Image</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            overflow: hidden;
+        }
+
+        /* Checkerboard background style */
+        .checkerboard {
+            background-image: 
+                url("image.png"), 
+                url("image.png"),
+                url("image.png"), 
+                url("image.png");
+            background-size: 100px 100px;
+            background-position: 
+                0 0, 50px 50px, 
+                0 50px, 50px 0;
+            background-repeat: repeat;
+            width: 100%;
+            height: 100vh;
+        }
+
+        /* Bouncing image style */
+        .dvd {
+            width: 100px;
+            height: 100px;
+            background-image: url("image.png");
+            background-size: cover;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="checkerboard"></div>
+    <div class="dvd" id="dvd"></div>
+
+    <script>
+        const dvd = document.getElementById("dvd");
+
+        // Starting position and velocity
+        let x = 200;
+        let y = 150;
+        let xVelocity = 2;
+        let yVelocity = 2;
+
+        // Animation logic
+        function bounce() {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            // Update position
+            x += xVelocity;
+            y += yVelocity;
+
+            // Reverse direction if hitting an edge
+            if (x + dvd.offsetWidth > windowWidth || x < 0) {
+                xVelocity *= -1;
+            }
+            if (y + dvd.offsetHeight > windowHeight || y < 0) {
+                yVelocity *= -1;
+            }
+
+            // Apply new position
+            dvd.style.transform = `translate(${x}px, ${y}px)`;
+
+            // Continuously call bounce function
+            requestAnimationFrame(bounce);
+        }
+
+        // Start animation
+        bounce();
+    </script>
+</body>
+</html>
