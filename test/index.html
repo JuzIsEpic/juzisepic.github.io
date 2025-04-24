@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cool Slungus Game - Platformer</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #009E60;
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvk0mHbaqSEmn10rpOIJVy8kO_Z-fLIQOs_w&s');
+      background-repeat: repeat;
+      background-size: 100px 100px;
+      position: relative;
+    }
+    #title-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      font-size: 40px;
+      z-index: 2;
+    }
+    #title-screen button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 20px;
+      cursor: pointer;
+      background-color: white;
+      color: #009E60;
+      border: none;
+      border-radius: 5px;
+    }
+    #score {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      font-size: 30px;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+    #player {
+      position: absolute;
+      top: 300px;
+      left: 100px;
+      width: 50px;
+      height: 50px;
+    }
+    .platform {
+      position: absolute;
+      width: 200px;
+      height: 20px;
+      background-color: brown;
+    }
+    .collectible {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div id="title-screen">
+    <div>Cool Slungus Game</div>
+    <button onclick="startGame()">Start Game</button>
+  </div>
+  <div id="score">Score: 0</div>
+  <img id="player" src="https://juzisepic.github.io/image.png" alt="Player">
+  <div class="platform" style="top: 400px; left: 100px;"></div>
+  <div class="platform" style="top: 300px; left: 300px;"></div>
+  <div class="platform" style="top: 200px; left: 500px;"></div>
+  <script>
+    const player = document.getElementById("player");
+    const platforms = document.querySelectorAll(".platform");
+    const scoreDisplay = document.getElementById("score");
+    const titleScreen = document.getElementById("title-screen");
+    let collectibles = [];
+    let score = 0;
+
+    const keys = { ArrowLeft: false, ArrowRight: false, ArrowUp: false };
+    const gravity = 0.5; // Weakened gravity
+    const jumpStrength = 10; // Adjusted jump strength
+    const speed = 5;
+    let isJumping = false;
+    let yVelocity = 0;
+    let xPosition = 100;
+    let yPosition = 300;
+
+    // Start the game
+    function startGame() {
+      titleScreen.style.display = "none";
+      createCollectibles(5); // Create 5 collectibles
+      gameLoop();
+    }
+
+    // Create collectibles
+    function createCollectibles(count) {
+      for (let i = 0; i < count; i++) {
+        const collectible = document.createElement("img");
+        collectible.classList.add("collectible");
+        collectible.src = "https://juzisepic.github.io/image.png"; // Replace with small image
+        collectible.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
+        collectible.style.left = `${Math.random() * (window.innerWidth - 50)}px`;
+        document.body.appendChild(collectible);
+        collectibles.push(collectible);
+      }
+    }
+
+    // Collision detection
+    function checkCollision() {
+      collectibles.forEach((collectible, index) => {
+        const playerRect = player.getBoundingClientRect();
+        const collectibleRect = collectible.getBoundingClientRect();
+
+        if (
+          playerRect.left < collectibleRect.right &&
+          playerRect.right > collectibleRect.left &&
+          playerRect.top < collectibleRect.bottom &&
+          playerRect.bottom > collectibleRect.top
+        ) {
+          // Collect the collectible
+          collectible.remove();
+          collectibles.splice(index, 1);
+          score++;
+          scoreDisplay.textContent = `Score: ${score}`;
+        }
+      });
+    }
+
+    // Platform collision and ground detection
+    function handlePlatformCollision() {
+      let isOnPlatform = false;
+
+      platforms.forEach((platform) => {
+        const platformRect = platform.getBoundingClientRect();
+        const playerRect = player.getBoundingClientRect();
+
+        if (
+          playerRect.bottom <= platformRect.top && // Player is above platform
+          playerRect.bottom + yVelocity >= platformRect.top && // Falling onto platform
+          playerRect.right > platformRect.left &&
+          playerRect.left < platformRect.right
+        ) {
+          yVelocity = 0; // Stop falling
+          isJumping = false; // Reset jumping status
+          yPosition = platformRect.top - playerRect.height; // Place player on the platform
+          isOnPlatform = true;
+        }
+      });
+
+      // Check if player hits the bottom of the window (ground)
+      if (yPosition + yVelocity >= window.innerHeight - player.offsetHeight) {
+        yVelocity = 0; // Stop falling
+        isJumping = false; // Reset jumping status
+        yPosition = window.innerHeight - player.offsetHeight; // Place player at the bottom
+        isOnPlatform = true;
+      }
+
+      if (!isOnPlatform) {
+        yVelocity += gravity; // Apply gravity if not on a platform
+      }
+    }
+
+    // Keydown and keyup events
+    document.addEventListener("keydown", (e) => {
+      if (e.key in keys) keys[e.key] = true;
+    });
+
+    document.addEventListener("keyup", (e) => {
+      if (e.key in keys) keys[e.key] = false;
+    });
+
+    // Game loop
+    function gameLoop() {
+      if (keys.ArrowLeft) xPosition -= speed;
+      if (keys.ArrowRight) xPosition += speed;
+
+      if (keys.ArrowUp && !isJumping) {
+        yVelocity = -jumpStrength; // Jumping force applied
+        isJumping = true; // Prevent double jumps or continuous upward motion
+      }
+
+      yPosition += yVelocity;
+      handlePlatformCollision();
+      checkCollision();
+
+      // Update player position
+      player.style.left = `${xPosition}px`;
+      player.style.top = `${yPosition}px`;
+
+      requestAnimationFrame(gameLoop);
+    }
+  </script>
+</body>
+</html>
