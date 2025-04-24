@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test website lmao</title>
+    <title>slungus screensaver</title>
     <style>
         body {
             margin: 0;
@@ -12,26 +12,27 @@
             overflow: hidden;
         }
 
-        /* Checkerboard background style */
+        /* Smaller checkerboard background */
         .checkerboard {
             background-image: 
                 url("image.png"), 
                 url("image.png"),
                 url("image.png"), 
                 url("image.png");
-            background-size: 100px 100px;
+            background-size: 50px 50px; /* Reduced size for smaller tiles */
             background-position: 
-                0 0, 50px 50px, 
-                0 50px, 50px 0;
+                0 0, 25px 25px, 
+                0 25px, 25px 0;
             background-repeat: repeat;
             width: 100%;
             height: 100vh;
+            position: absolute;
         }
 
-        /* Bouncing image style */
+        /* Larger bouncing image */
         .dvd {
-            width: 100px;
-            height: 100px;
+            width: 150px; /* Larger size for the DVD image */
+            height: 150px;
             background-image: url("image.png");
             background-size: cover;
             position: absolute;
@@ -39,8 +40,8 @@
     </style>
 </head>
 <body>
-    <div class="checkerboard"></div>
-    <div class="dvd" id="dvd"></div>
+    <div class="checkerboard"></div> <!-- Smaller checkerboard -->
+    <div class="dvd" id="dvd"></div> <!-- Larger bouncing DVD image -->
 
     <script>
         const dvd = document.getElementById("dvd");
