@@ -1,84 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>slungus screensaver</title>
-    <link rel="icon" href="image.png" type="image/png">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #000;
-            overflow: hidden;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rotating Cube Screensaver with Customizable Texture and Checkerboard Speed</title>
+  <link rel="icon" href="https://juzisepic.github.io/image.png" type="image/png">
+  <style>
+    /* Define customizable variables for background speed and texture */
+    :root {
+      --bgSpeed: 3s; /* Duration of the diagonal movement animation */
+      --texture: url("https://juzisepic.github.io/image.png"); /* Texture for the checkerboard and cube faces */
+    }
 
-        /* Smaller checkerboard background */
-        .checkerboard {
-            background-image: 
-                url("image.png"), 
-                url("image.png"),
-                url("image.png"), 
-                url("image.png");
-            background-size: 50px 50px; /* Reduced size for smaller tiles */
-            background-position: 
-                0 0, 25px 25px, 
-                0 25px, 25px 0;
-            background-repeat: repeat;
-            width: 100%;
-            height: 100vh;
-            position: absolute;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      overflow: hidden;
+    }
 
-        /* Larger bouncing image */
-        .dvd {
-            width: 150px; /* Larger size for the DVD image */
-            height: 150px;
-            background-image: url("image.png");
-            background-size: cover;
-            position: absolute;
-        }
-    </style>
+    /* Animated checkerboard background */
+    .checkerboard {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-image: var(--texture), var(--texture), var(--texture), var(--texture);
+      background-size: 50px 50px;
+      background-position: 0 0, 25px 25px, 0 25px, 25px 0;
+      background-repeat: repeat;
+      animation: moveDiagonal var(--bgSpeed) linear infinite;
+      z-index: -1;
+    }
+
+    /* Keyframe animation shifts background diagonally by one tile (50px) */
+    @keyframes moveDiagonal {
+      from {
+        background-position: 0 0, 25px 25px, 0 25px, 25px 0;
+      }
+      to {
+        background-position: 50px 50px, 75px 75px, 50px 75px, 75px 50px;
+      }
+    }
+
+    /* Centered container for the rotating cube */
+    .cube-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      perspective: 600px;
+    }
+
+    /* Cube element with 3D transform and rotation animation */
+    .cube {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      transform-style: preserve-3d;
+      animation: rotateCube 5s infinite linear;
+    }
+
+    /* Cube faces using the texture variable */
+    .cube .face {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background-image: var(--texture);
+      background-size: cover;
+      opacity: 1;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Position each face to form a cube */
+    .cube .front  { transform: translateZ(75px); }
+    .cube .back   { transform: rotateY(180deg) translateZ(75px); }
+    .cube .left   { transform: rotateY(-90deg) translateZ(75px); }
+    .cube .right  { transform: rotateY(90deg) translateZ(75px); }
+    .cube .top    { transform: rotateX(90deg) translateZ(75px); }
+    .cube .bottom { transform: rotateX(-90deg) translateZ(75px); }
+
+    /* Keyframe animation to continuously rotate the cube */
+    @keyframes rotateCube {
+      from {
+        transform: rotateX(0deg) rotateY(0deg);
+      }
+      to {
+        transform: rotateX(360deg) rotateY(360deg);
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="checkerboard"></div> <!-- Smaller checkerboard -->
-    <div class="dvd" id="dvd"></div> <!-- Larger bouncing DVD image -->
-
-    <script>
-        const dvd = document.getElementById("dvd");
-
-        // Starting position and velocity
-        let x = 200;
-        let y = 150;
-        let xVelocity = 2;
-        let yVelocity = 2;
-
-        // Animation logic
-        function bounce() {
-            const windowWidth = window.innerWidth;
-            const windowHeight = window.innerHeight;
-
-            // Update position
-            x += xVelocity;
-            y += yVelocity;
-
-            // Reverse direction if hitting an edge
-            if (x + dvd.offsetWidth > windowWidth || x < 0) {
-                xVelocity *= -1;
-            }
-            if (y + dvd.offsetHeight > windowHeight || y < 0) {
-                yVelocity *= -1;
-            }
-
-            // Apply new position
-            dvd.style.transform = `translate(${x}px, ${y}px)`;
-
-            // Continuously call bounce function
-            requestAnimationFrame(bounce);
-        }
-
-        // Start animation
-        bounce();
-    </script>
+  <div class="checkerboard"></div>
+  <div class="cube-container">
+    <div class="cube">
+      <div class="face front"></div>
+      <div class="face back"></div>
+      <div class="face left"></div>
+      <div class="face right"></div>
+      <div class="face top"></div>
+      <div class="face bottom"></div>
+    </div>
+  </div>
 </body>
 </html>
