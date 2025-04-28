@@ -44,6 +44,25 @@
       position: relative;
     }
 
+    .corner-image-link {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: inline-block;
+    }
+
+    .corner-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .corner-image-link:hover .corner-image {
+      transform: translateY(-5px);
+    }
+
     header {
       padding: 30px 20px 10px;
     }
@@ -233,6 +252,10 @@
     <footer>
       © 2025 JuzIsEpic · <a href="https://github.com/juzisepic" target="_blank">GitHub Profile</a>
     </footer>
+
+    <a class="corner-image-link" href="https://juzisepic.github.io/slungus" target="_blank">
+      <img class="corner-image" src="https://juzisepic.github.io/image.png" alt="Corner Image">
+    </a>
   </div>
 </body>
 </html>
