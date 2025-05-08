@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="image.png" type="image/png">
+  <link rel="icon" href="https://juzisepic.github.io/image.png" type="image/png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JuzIsEpic's GitHub Games</title>
@@ -12,15 +12,16 @@
       padding: 0;
       box-sizing: border-box;
     }
-
+    
     body {
       font-family: 'Rubik', sans-serif;
       background: #121212;
       color: #f0f0f0;
       overflow-x: hidden;
       font-size: 1.1em;
+      padding-bottom: 20px;
     }
-
+    
     .content {
       display: flex;
       flex-direction: column;
@@ -29,7 +30,7 @@
       text-align: center;
       padding-bottom: 60px;
     }
-
+    
     .banner {
       width: 100%;
       height: 200px;
@@ -43,30 +44,11 @@
       letter-spacing: 1px;
       position: relative;
     }
-
-    .corner-image-link {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: inline-block;
-    }
-
-    .corner-image {
-      width: 50px;
-      height: 50px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .corner-image-link:hover .corner-image {
-      transform: translateY(-5px);
-    }
-
+    
     header {
       padding: 30px 20px 10px;
     }
-
+    
     header img {
       width: 132px;
       height: 132px;
@@ -74,18 +56,18 @@
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
       margin-bottom: 15px;
     }
-
+    
     h1 {
       font-size: 2em;
       margin: 10px 0;
     }
-
+    
     p {
       font-size: 1.2em;
       color: #cccccc;
       margin-top: 0;
     }
-
+    
     .game-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -95,11 +77,11 @@
       width: 100%;
       margin-top: 40px;
     }
-
+    
     .game-card {
       background-color: rgba(30, 30, 30, 0.8);
       border-radius: 12px;
-      padding: 40px 20px 20px;
+      padding: 60px 20px 20px;
       box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
       transition: transform 0.2s ease;
       display: flex;
@@ -109,7 +91,7 @@
       position: relative;
       margin-top: 30px;
     }
-
+    
     .game-card img {
       width: 100px;
       height: 100px;
@@ -120,23 +102,75 @@
       left: 50%;
       transform: translateX(-50%);
     }
-
-    .game-card a {
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.2em;
+    
+    .game-card button {
+      background-color: #1976d2;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1em;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
       margin-top: 10px;
     }
-
-    .game-card a:hover {
-      text-decoration: underline;
+    
+    .game-card button:hover {
+      background-color: #4fc3f7;
     }
-
-    .game-card:hover {
-      transform: translateY(-10px);
+    
+    .game-container {
+      width: 90%;
+      max-width: 1000px;
+      height: 600px;
+      margin-top: 30px;
+      border-radius: 12px;
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
     }
-
+    
+    .game-container iframe {
+      width: 100%;
+      height: calc(100% - 60px); /* leave room for the info bar */
+      border: none;
+    }
+    
+    .game-info {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: rgba(30, 30, 30, 0.9);
+      color: #f0f0f0;
+      height: 60px;
+      font-size: 1.1em;
+    }
+    
+    .game-info img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    
+    /* Fullscreen button styling */
+    .fullscreen-btn {
+      background: none;
+      border: none;
+      margin-left: auto;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .fullscreen-btn svg {
+      fill: white;
+      width: 24px;
+      height: 24px;
+    }
+    
     .about-section {
       display: flex;
       align-items: center;
@@ -148,11 +182,11 @@
       max-width: 600px;
       transition: transform 0.2s ease;
     }
-
+    
     .about-section:hover {
       transform: translateY(-10px);
     }
-
+    
     .about-section img {
       width: 100px;
       height: 100px;
@@ -160,23 +194,23 @@
       margin-right: 20px;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     }
-
+    
     .about-info {
       text-align: left;
     }
-
+    
     .about-info h2 {
       margin: 0;
       font-size: 1.6em;
       color: #fff;
     }
-
+    
     .about-info p {
       margin-top: 10px;
       color: #ddd;
       font-size: 1.1em;
     }
-
+    
     .channel-button {
       display: inline-block;
       margin-top: 10px;
@@ -189,21 +223,40 @@
       transition: background-color 0.2s ease;
       font-size: 1.1em;
     }
-
+    
     .channel-button:hover {
       background-color: #cc0000;
     }
-
+    
     footer {
       margin-top: auto;
       padding: 20px;
       color: #999;
       font-size: 1em;
     }
-
+    
     footer a {
       color: #4fc3f7;
       text-decoration: none;
+    }
+    
+    .corner-image-link {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: inline-block;
+    }
+    
+    .corner-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    .corner-image-link:hover .corner-image {
+      transform: translateY(-5px);
     }
   </style>
 </head>
@@ -214,44 +267,49 @@
     </div>
 
     <header>
-      <img src="juz.png" alt="JuzIsEpic's Avatar">
+      <img src="https://juzisepic.github.io/juz.png" alt="JuzIsEpic's Avatar">
       <h1>Welcome!</h1>
-      <p>Here are some games I’ve built and posted on GitHub Pages:</p>
+      <p>Click on a game below to play right here on the page:</p>
     </header>
 
     <section class="game-list">
       <div class="game-card">
-        <a href="https://juzisepic.github.io/not-a-dash-game/" target="_blank">
-          <img src="dash.png" alt="Not A Dash Game Icon">
-        </a>
-        <a href="https://juzisepic.github.io/not-a-dash-game/" target="_blank">Not A Dash Game</a>
+        <img src="https://juzisepic.github.io/dash.png" alt="Not A Dash Game Icon">
+        <button onclick="loadGame('https://juzisepic.github.io/not-a-dash-game/', 'https://juzisepic.github.io/dash.png', 'Not A Dash Game')">Play Not A Dash Game</button>
       </div>
       <div class="game-card">
-        <a href="https://juzisepic.github.io/toasty-jump/" target="_blank">
-          <img src="toasty.png" alt="Toasty Jump Icon">
-        </a>
-        <a href="https://juzisepic.github.io/toasty-jump/" target="_blank">Toasty Jump</a>
+        <img src="https://juzisepic.github.io/toasty.png" alt="Toasty Jump Icon">
+        <button onclick="loadGame('https://juzisepic.github.io/toasty-jump/', 'https://juzisepic.github.io/toasty.png', 'Toasty Jump')">Play Toasty Jump</button>
       </div>
       <div class="game-card">
-        <a href="https://juzisepic.github.io/undertale-challenge/" target="_blank">
-          <img src="undertale.png" alt="Undertale Challenge Icon">
-        </a>
-        <a href="https://juzisepic.github.io/undertale-challenge/" target="_blank">UNDERTALE Challenge</a>
+        <img src="https://juzisepic.github.io/undertale.png" alt="Undertale Challenge Icon">
+        <button onclick="loadGame('https://juzisepic.github.io/undertale-challenge/', 'https://juzisepic.github.io/undertale.png', 'UNDERTALE Challenge')">Play UNDERTALE Challenge</button>
       </div>
-      <!-- New Game Card: Penguin Clicker -->
       <div class="game-card">
-        <a href="https://juzisepic.github.io/penguin-clicker/" target="_blank">
-          <img src="placeholder.png" alt="Penguin Clicker Icon">
-        </a>
-        <a href="https://juzisepic.github.io/penguin-clicker/" target="_blank">Penguin Clicker</a>
+        <img src="https://juzisepic.github.io/placeholder.png" alt="Penguin Clicker Icon">
+        <button onclick="loadGame('https://juzisepic.github.io/penguin-clicker/', 'https://juzisepic.github.io/placeholder.png', 'Penguin Clicker')">Play Penguin Clicker</button>
       </div>
     </section>
 
+    <div class="game-container" id="gameFrameContainer">
+      <iframe id="gameFrame" src=""></iframe>
+      <div class="game-info" id="gameInfo">
+        <img id="gameInfoIcon" src="" alt="Game Icon">
+        <span id="gameInfoTitle"></span>
+        <button class="fullscreen-btn" onclick="toggleFullScreen()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M4 4h7V2H2v9h2V4zm16 0v7h2V2h-9v2h7zM4 20v-7H2v9h9v-2H4zm16 0h-7v2h9v-9h-2v7z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
     <section class="about-section">
-      <img src="juz.png" alt="YouTube Icon">
+      <img src="https://juzisepic.github.io/juz.png" alt="YouTube Icon">
       <div class="about-info">
         <h2>JuzIsEpic</h2>
-        <p>Hi, I'm JuzIsEpic. I am a pro at FNF and I make videos of Roblox, Minecraft and so much more. I hope you subscribe to me :D</p>
+        <p>Hi, I'm JuzIsEpic. I create videos of Roblox, Minecraft, and much more.
+        I hope you subscribe to my channel!</p>
         <a class="channel-button" href="https://www.youtube.com/@juzisepic" target="_blank">Visit Channel</a>
       </div>
     </section>
@@ -264,5 +322,25 @@
       <img class="corner-image" src="https://juzisepic.github.io/image.png" alt="Corner Image">
     </a>
   </div>
+
+  <script>
+    function loadGame(gameUrl, gameIcon, gameTitle) {
+      document.getElementById('gameFrame').src = gameUrl;
+      document.getElementById('gameFrameContainer').style.display = 'flex';
+      document.getElementById('gameInfoIcon').src = gameIcon;
+      document.getElementById('gameInfoTitle').innerText = gameTitle;
+    }
+
+    function toggleFullScreen() {
+      var container = document.getElementById('gameFrameContainer');
+      if (!document.fullscreenElement) {
+        container.requestFullscreen().catch(err => {
+          console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    }
+  </script>
 </body>
 </html>
