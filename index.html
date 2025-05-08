@@ -7,6 +7,7 @@
   <title>JuzIsEpic's GitHub Games</title>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    /* Global Styles */
     * {
       margin: 0;
       padding: 0;
@@ -120,6 +121,7 @@
       background-color: #4fc3f7;
     }
     
+    /* The game container is now visible by default and set to relative position */
     .game-container {
       width: 90%;
       max-width: 1000px;
@@ -127,9 +129,10 @@
       margin-top: 30px;
       border-radius: 12px;
       overflow: hidden;
-      display: none;
+      display: flex;
       flex-direction: column;
       box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+      position: relative;
     }
     
     .game-container iframe {
@@ -258,6 +261,22 @@
     .corner-image-link:hover .corner-image {
       transform: translateY(-5px);
     }
+
+    /* Placeholder styling for the initial game view */
+    .game-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 60px); /* leave room for the game info bar */
+      background-color: black;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      z-index: 10;
+    }
   </style>
 </head>
 <body>
@@ -292,10 +311,14 @@
     </section>
 
     <div class="game-container" id="gameFrameContainer">
+      <!-- Placeholder overlay displayed on initial load -->
+      <div id="placeholderMessage" class="game-placeholder">
+        Pick a game to play!
+      </div>
       <iframe id="gameFrame" src=""></iframe>
       <div class="game-info" id="gameInfo">
-        <img id="gameInfoIcon" src="" alt="Game Icon">
-        <span id="gameInfoTitle"></span>
+        <img id="gameInfoIcon" src="https://juzisepic.github.io/placeholder.png" alt="Placeholder Icon">
+        <span id="gameInfoTitle">Pick a game</span>
         <button class="fullscreen-btn" onclick="toggleFullScreen()">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M4 4h7V2H2v9h2V4zm16 0v7h2V2h-9v2h7zM4 20v-7H2v9h9v-2H4zm16 0h-7v2h9v-9h-2v7z"/>
@@ -325,10 +348,15 @@
 
   <script>
     function loadGame(gameUrl, gameIcon, gameTitle) {
+      // Set the game iframe to the selected game's URL
       document.getElementById('gameFrame').src = gameUrl;
-      document.getElementById('gameFrameContainer').style.display = 'flex';
+      // Update the game info bar with the selected game's icon and title
       document.getElementById('gameInfoIcon').src = gameIcon;
       document.getElementById('gameInfoTitle').innerText = gameTitle;
+      // Hide the placeholder message overlay once a game is loaded
+      document.getElementById('placeholderMessage').style.display = 'none';
+      // Smoothly scroll the page to the game container for better UX
+      document.getElementById('gameFrameContainer').scrollIntoView({ behavior: 'smooth' });
     }
 
     function toggleFullScreen() {
@@ -341,6 +369,12 @@
         document.exitFullscreen();
       }
     }
+
+    // On page load, preset the game info bar to show the placeholder details.
+    window.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('gameInfoIcon').src = 'https://juzisepic.github.io/placeholder.png';
+      document.getElementById('gameInfoTitle').innerText = 'Pick a game';
+    });
   </script>
 </body>
 </html>
